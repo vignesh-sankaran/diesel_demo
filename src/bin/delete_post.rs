@@ -1,3 +1,6 @@
+/* // All credit for this code goes to Sean Griffin, since I couldn't 
+ figure out why it wasn't working and turned out I forgot the * after diesel::prelude :) */
+
 extern crate diesel_demo;
 extern crate diesel;
 
