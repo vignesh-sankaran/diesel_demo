@@ -1,11 +1,15 @@
-#![feature(proc_macro)]
+#![cfg_attr(feature = "nightly", feature(proc_macro))]
 
 #[macro_use] extern crate diesel;
+#[cfg(feature = "nightly")]
 #[macro_use] extern crate diesel_codegen;
 extern crate dotenv;
 
-pub mod schema;
-pub mod models;
+#[cfg(feature = "nightly")]
+include!("lib.in.rs");
+
+#[cfg(feature = "with-syntex")]
+include!(concat!(env!("OUT_DIR"), "/lib.rs"));
 
 use diesel::prelude::*;
 use diesel::pg::PgConnection;

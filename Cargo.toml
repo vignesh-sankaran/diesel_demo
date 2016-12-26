@@ -2,8 +2,17 @@
 name = "diesel_demo"
 version = "0.0.1"
 authors = ["Vignesh Sankaran <developer@sankaran.io>"]
+build = "build.rs"
+
+[build-dependencies]
+diesel_codegen_syntex = { version = "0.9.0", features = ["postgres"], optional = true }
+
+[features]
+default = ["nightly"]
+with-syntex = ["diesel_codegen_syntex"]
+nightly = ["diesel/unstable", "diesel_codegen"]
 
 [dependencies]
 diesel = "0.9.0"
-diesel_codegen = { version = "0.9.0", features = ["postgres"] }
+diesel_codegen = { version = "0.9.0", features = ["postgres"] , optional = true}
 dotenv = "0.8.0"
